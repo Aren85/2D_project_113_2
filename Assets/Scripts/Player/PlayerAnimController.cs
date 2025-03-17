@@ -7,6 +7,8 @@ public class PlayerAnimController : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private PlayerController playerController;
     private Animator animator;
+    private Vector2 lastDirection;
+    private Vector2 movement;
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -16,51 +18,39 @@ public class PlayerAnimController : MonoBehaviour
 
     private void Update()
     {
-        //SetFlipX();
-
+        movement = playerController.GetMovementInput(); // 取得移動方向
         SetIdleAnimations();
+        SetWalkAnimations();
     }
-    void SetFlipX()
-    {
-        if(Input.GetKey(playerController.moveLeftKey))
-        {
-            spriteRenderer.flipX = true;
-        }
-        if (Input.GetKey(playerController.moveRightKey))
-        {
-            spriteRenderer.flipX = false;
-        }
-    }
-
-    void SetPos()
-    {
-        Vector2 movement = playerController.GetMovementInput(); // 取得移動方向
-        animator.SetFloat("PosX", movement.x);
-        animator.SetFloat("PosY", movement.y);
-    }
-
     void SetIdleAnimations()
     {
-        Vector2 movement = playerController.GetMovementInput(); // 取得移動方向
-
-        if(movement.x >= 1)
+        animator.SetBool("isIdle", playerController.isIdle);
+    }
+    void SetWalkAnimations()
+    {
+        animator.SetBool("isWalk", playerController.isWalk);
+        if (playerController.isWalk)
         {
-            animator.SetFloat("PosX", 1);
-            animator.SetFloat("PosY", 0);
-        }else if(movement.x <= -1)
-        {
-            animator.SetFloat("PosX", -1);
-            animator.SetFloat("PosY", 0);
-        }else if(movement.y >= 1)
-        {
-            animator.SetFloat("PosX", 0);
-            animator.SetFloat("PosY", 1);
+            if (movement.x >= 1)
+            {
+                animator.SetFloat("PosX", 1);
+                animator.SetFloat("PosY", 0);
+            }
+            else if (movement.x <= -1)
+            {
+                animator.SetFloat("PosX", -1);
+                animator.SetFloat("PosY", 0);
+            }
+            else if (movement.y >= 1)
+            {
+                animator.SetFloat("PosX", 0);
+                animator.SetFloat("PosY", 1);
+            }
+            else if (movement.y <= -1)
+            {
+                animator.SetFloat("PosX", 0);
+                animator.SetFloat("PosY", -1);
+            }
         }
-        else if (movement.y <= -1)
-        {
-            animator.SetFloat("PosX", 0);
-            animator.SetFloat("PosY", -1);
-        }
-
     }
 }

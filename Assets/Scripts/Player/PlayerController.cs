@@ -12,6 +12,13 @@ public class PlayerController : MonoBehaviour
     public bool isIdle = true;
     public bool isWalk = false;
 
+    public enum lastDirection { Left, Right, Up, Down };
+
+    private void Update()
+    {
+        CheckMovementInput();
+    }
+
     // 取得移動方向
     public Vector2 GetMovementInput()
     {
@@ -26,5 +33,17 @@ public class PlayerController : MonoBehaviour
         return new Vector2(moveX, moveY).normalized; // 正規化，確保對角移動不會變快
     }
 
-
+    public void CheckMovementInput()
+    {
+        if(Input.GetKey(moveUpKey)|| Input.GetKey(moveDownKey)|| Input.GetKey(moveLeftKey)|| Input.GetKey(moveRightKey))
+        {
+            isWalk = true;
+            isIdle = false;
+}
+        else
+        {
+            isWalk = false;
+            isIdle = true;
+        }
+    }
 }
