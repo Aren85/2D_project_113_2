@@ -14,6 +14,11 @@ public class PlayerAnimController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerController = GetComponentInParent<PlayerController>();
         animator = GetComponent<Animator>();
+
+    }
+    private void Start()
+    {
+        FormatDirection();
     }
 
     private void Update()
@@ -21,6 +26,12 @@ public class PlayerAnimController : MonoBehaviour
         movement = playerController.GetMovementInput(); // 取得移動方向
         SetIdleAnimations();
         SetWalkAnimations();
+    }
+
+    void FormatDirection()
+    {
+        animator.SetFloat("PosX", 0);
+        animator.SetFloat("PosY", -1);
     }
     void SetIdleAnimations()
     {

@@ -8,6 +8,9 @@ public class PlayerController : MonoBehaviour
     public KeyCode moveDownKey = KeyCode.S;
     public KeyCode moveLeftKey = KeyCode.A;
     public KeyCode moveRightKey = KeyCode.D;
+    public KeyCode normalAttack = KeyCode.Mouse0;
+    public KeyCode strongAttack = KeyCode.Mouse1;
+    public KeyCode dash = KeyCode.LeftShift;
 
     public bool isIdle = true;
     public bool isWalk = false;
@@ -17,6 +20,10 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         CheckMovementInput();
+        //NormalAttack();
+        //StrongAttack();
+        Dash();
+        AttackFaceDirection();
     }
 
     // 取得移動方向
@@ -35,15 +42,50 @@ public class PlayerController : MonoBehaviour
 
     public void CheckMovementInput()
     {
-        if(Input.GetKey(moveUpKey)|| Input.GetKey(moveDownKey)|| Input.GetKey(moveLeftKey)|| Input.GetKey(moveRightKey))
+        if (Input.GetKey(moveUpKey) || Input.GetKey(moveDownKey) || Input.GetKey(moveLeftKey) || Input.GetKey(moveRightKey))
         {
             isWalk = true;
             isIdle = false;
-}
+        }
         else
         {
             isWalk = false;
             isIdle = true;
+        }
+    }
+
+    public void NormalAttack()
+    {
+        if (Input.GetKey(normalAttack))
+        {
+            Debug.Log("一般攻擊");
+        }
+    }
+
+    public void AttackFaceDirection()
+    {
+        Vector2 mousePosition;
+
+        if(Input.GetKey(normalAttack))
+        {
+            mousePosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+            Debug.Log(mousePosition);
+        }
+    }
+
+    public void StrongAttack()
+    {
+        if (Input.GetKey(strongAttack))
+        {
+            Debug.Log("強力攻擊");
+        }
+    }
+
+    public void Dash()
+    {
+        if (Input.GetKey(dash))
+        {
+            Debug.Log("衝刺");
         }
     }
 }

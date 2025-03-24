@@ -461,9 +461,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d328af110dc97da47806c8faf2f4a3d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 1362668404}
-  playerController: {fileID: 0}
-  animator: {fileID: 1362668405}
 --- !u!1 &1388744339
 GameObject:
   m_ObjectHideFlags: 0
@@ -514,6 +511,8 @@ MonoBehaviour:
   moveDownKey: 115
   moveLeftKey: 97
   moveRightKey: 100
+  isIdle: 1
+  isWalk: 0
 --- !u!114 &1388744342
 MonoBehaviour:
   m_ObjectHideFlags: 0
