@@ -554,9 +554,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1388744340}
-  - component: {fileID: 1388744341}
-  - component: {fileID: 1388744342}
-  - component: {fileID: 1388744343}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -580,74 +577,6 @@ Transform:
   - {fileID: 1362668403}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1388744341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1388744339}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72c8e53658fc84e448c7574d59bb8585, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveUpKey: 119
-  moveDownKey: 115
-  moveLeftKey: 97
-  moveRightKey: 100
-  normalAttack: 323
-  strongAttack: 324
-  dash: 304
-  mousePostion: {x: 0, y: 0, z: 0}
-  mouseWorldPostion: {x: 0, y: 0, z: 0}
-  clickPosition: {x: 0, y: 0}
-  clickWorldPosition: {x: 0, y: 0}
-  angle: 0
-  worldAngle: 0
-  isIdle: 1
-  isWalk: 0
-  attackUp: 0
-  attackDown: 0
-  attackLeft: 0
-  attackRight: 0
---- !u!114 &1388744342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1388744339}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a658ccfb8c030541a63f607241ae6d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inputReader: {fileID: 11400000, guid: 47d862faf6ce4de49a4d07c9ce29bcfd, type: 2}
-  playerMoveSpeed: 5
---- !u!114 &1388744343
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1388744339}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7638217ab454d37488175dec350adba3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mousePostion: {x: 0, y: 0, z: 0}
-  mouseWorldPostion: {x: 0, y: 0, z: 0}
-  clickPosition: {x: 0, y: 0}
-  clickWorldPosition: {x: 0, y: 0}
-  angle: 0
-  worldAngle: 0
-  up: 0
-  down: 0
-  left: 0
-  right: 0
-  lineLength: 3
 --- !u!1 &1717421503
 GameObject:
   m_ObjectHideFlags: 0
