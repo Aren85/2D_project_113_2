@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class PlayerAnimController : MonoBehaviour
 {
-    private SpriteRenderer spriteRenderer;
     private PlayerController playerController;
     private Animator animator;
-    private Vector2 lastDirection;
     private Vector2 movement;
     private void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
         playerController = GetComponentInParent<PlayerController>();
         animator = GetComponent<Animator>();
 
@@ -26,6 +23,7 @@ public class PlayerAnimController : MonoBehaviour
         movement = playerController.GetMovementInput(); // 取得移動方向
         SetIdleAnimations();
         SetWalkAnimations();
+        SetAttackAnimations();
     }
 
     void FormatDirection()
@@ -62,6 +60,28 @@ public class PlayerAnimController : MonoBehaviour
                 animator.SetFloat("PosX", 0);
                 animator.SetFloat("PosY", -1);
             }
+        }
+    }
+
+    void SetAttackAnimations()
+    {
+        if (Input.GetKey(playerController.normalAttack)) // 按住攻擊鍵
+        {
+            string newAnimation = "";
+
+            if (playerController.attackUp) newAnimation = "Player_Attack_Up";
+            else if (playerController.attackDown) newAnimation = "Player_Attack_Down";
+            else if (playerController.attackLeft) newAnimation = "Player_Attack_Left";
+            else if (playerController.attackRight) newAnimation = "Player_Attack_Right";
+
+            if (!string.IsNullOrEmpty(newAnimation) && !animator.GetCurrentAnimatorStateInfo(0).IsName(newAnimation))
+            {
+                animator.CrossFade(newAnimation, 0.2f); // 只在動畫不同時切換，避免重複播放相同動畫
+            }
+        }
+        else if (Input.GetKeyUp(playerController.normalAttack)) // 放開攻擊鍵
+        {
+            animator.CrossFade("Player_Idle", 0.2f); // 切換回待機動畫
         }
     }
 }
