@@ -9,24 +9,26 @@ public class PlayerMovement : MonoBehaviour
     public float playerMoveSpeed = 5f;
     private PlayerController playerController;
 
-    Vector2 moveInput;
+    private void OnEnable()
+    {
+        inputReader.MoveEvent += EventMove;
+    }
 
     private void Awake()
     {
         playerController = GetComponent<PlayerController>();
     }
 
-    private void Start()
-    {
-        inputReader.Move += direction => moveInput = direction;
-    }
-
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(moveInput);
         //Vector2 movement = playerController.GetMovementInput(); // 取得移動方向
         //Move(movement); // 執行移動
+    }
+
+    public void EventMove(Vector2 direction)
+    {
+        transform.Translate(new Vector2(direction.x, direction.y) * Time.deltaTime);
     }
 
     public void Move(Vector2 direction)

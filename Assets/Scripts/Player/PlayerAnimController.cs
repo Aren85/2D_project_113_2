@@ -24,6 +24,8 @@ public class PlayerAnimController : MonoBehaviour
         SetIdleAnimations();
         SetWalkAnimations();
         SetAttackAnimations();
+
+        //Debug.Log(animator.GetCurrentAnimatorStateInfo(0).nameHash);
     }
 
     void FormatDirection()
@@ -65,7 +67,7 @@ public class PlayerAnimController : MonoBehaviour
 
     void SetAttackAnimations()
     {
-        if (Input.GetKey(playerController.normalAttack)) // 按住攻擊鍵
+        if (Input.GetKeyDown(playerController.normalAttack)) // 按住攻擊鍵
         {
             string newAnimation = "";
 
@@ -73,15 +75,18 @@ public class PlayerAnimController : MonoBehaviour
             else if (playerController.attackDown) newAnimation = "Player_Attack_Down";
             else if (playerController.attackLeft) newAnimation = "Player_Attack_Left";
             else if (playerController.attackRight) newAnimation = "Player_Attack_Right";
-
-            if (!string.IsNullOrEmpty(newAnimation) && !animator.GetCurrentAnimatorStateInfo(0).IsName(newAnimation))
-            {
-                animator.CrossFade(newAnimation, 0.2f); // 只在動畫不同時切換，避免重複播放相同動畫
-            }
         }
-        else if (Input.GetKeyUp(playerController.normalAttack)) // 放開攻擊鍵
+        else// 放開攻擊鍵
         {
             animator.CrossFade("Player_Idle", 0.2f); // 切換回待機動畫
         }
+    }
+
+    void CheckCurrentState(string animationStateName)
+    {
+        bool isCurrentState;
+        AnimatorStateInfo currentState = animator.GetCurrentAnimatorStateInfo(0);
+
+        //if(currentState.nameHash == animationStateName.)
     }
 }

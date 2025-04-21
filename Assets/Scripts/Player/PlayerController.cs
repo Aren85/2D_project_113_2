@@ -94,7 +94,7 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKey(normalAttack))
         {
             mousePosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-            Debug.Log(mousePosition);
+            //Debug.Log(mousePosition);
         }
     }
 
@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKey(strongAttack))
         {
-            Debug.Log("±j¤O§ðÀ»");
+            //Debug.Log("±j¤O§ðÀ»");
         }
     }
 
@@ -110,7 +110,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKey(dash))
         {
-            Debug.Log("½Ä¨ë");
+            //Debug.Log("½Ä¨ë");
         }
     }
 

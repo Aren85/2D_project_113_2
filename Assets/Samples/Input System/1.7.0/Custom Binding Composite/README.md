@@ -1,1 +1,0 @@
-這個範例展示了如何實現並註冊一個自定義的 InputBindingComposite。

@@ -3,22 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
-using static PlayerInputActions;
-
-public interface IInputReader
-{
-    Vector2 Direction { get; }
-}
 
 [CreateAssetMenu(fileName = "InputReader", menuName ="Platformer/Input/InputReader")]
-public class InputReader : ScriptableObject, PlayerInputActions.IPlayerActions, IInputReader
+public class InputReader : ScriptableObject, PlayerInputActions.IPlayerActions
 {
-    public event UnityAction<Vector2> Move = delegate { };
+    public event UnityAction<Vector2> MoveEvent = delegate { };
+
 
 
     PlayerInputActions inputActions;
-
-    public Vector2 Direction => inputActions.Player.Move.ReadValue<Vector2>();
 
     private void OnEnable()
     {
@@ -31,7 +24,7 @@ public class InputReader : ScriptableObject, PlayerInputActions.IPlayerActions, 
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        Move.Invoke(context.ReadValue<Vector2>());
+        MoveEvent.Invoke(context.ReadValue<Vector2>());
     }
 
     public void OnFire(InputAction.CallbackContext context)
